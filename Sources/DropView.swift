@@ -27,11 +27,11 @@ internal final class DropView: UIView {
   required init(drop: Drop) {
     self.drop = drop
     super.init(frame: .zero)
-
-    backgroundColor = .secondarySystemBackground
+      
+    backgroundColor = UIColor(red: 31/255, green: 31/255, blue: 31/255, alpha: 1)
 
     addSubview(stackView)
-
+      
     let constraints = createLayoutConstraints(for: drop)
     NSLayoutConstraint.activate(constraints)
     configureViews(for: drop)
@@ -55,8 +55,8 @@ internal final class DropView: UIView {
     var constraints: [NSLayoutConstraint] = []
 
     constraints += [
-      imageView.heightAnchor.constraint(equalToConstant: 25),
-      imageView.widthAnchor.constraint(equalToConstant: 25)
+      imageView.heightAnchor.constraint(equalToConstant: 24),
+      imageView.widthAnchor.constraint(equalToConstant: 24)
     ]
 
     constraints += [
@@ -64,36 +64,12 @@ internal final class DropView: UIView {
       button.widthAnchor.constraint(equalToConstant: 35)
     ]
 
-    var insets = UIEdgeInsets(top: 7.5, left: 12.5, bottom: 7.5, right: 12.5)
-
-    if drop.icon == nil {
-      insets.left = 40
-    }
-
-    if drop.action?.icon == nil {
-      insets.right = 40
-    }
-
-    if drop.subtitle == nil {
-      insets.top = 15
-      insets.bottom = 15
-      if drop.action?.icon != nil {
-        insets.top = 10
-        insets.bottom = 10
-        insets.right = 10
-      }
-    }
-
-    if drop.icon == nil, drop.action?.icon == nil {
-      insets.left = 50
-      insets.right = 50
-    }
-
     constraints += [
-      stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: insets.left),
-      stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: insets.top),
-      stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -insets.right),
-      stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -insets.bottom)
+      stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+      stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+      stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+      stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+      
     ]
 
     return constraints
@@ -121,9 +97,9 @@ internal final class DropView: UIView {
     }
 
     layer.shadowColor = UIColor.black.cgColor
-    layer.shadowOffset = .zero
-    layer.shadowRadius = 25
-    layer.shadowOpacity = 0.15
+    layer.shadowOffset = CGSize(width: 0, height: 2)
+    layer.shadowRadius = 18
+    layer.shadowOpacity = 0.3
     layer.shouldRasterize = true
     layer.rasterizationScale = UIScreen.main.scale
     layer.masksToBounds = false
@@ -137,9 +113,9 @@ internal final class DropView: UIView {
   lazy var titleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.textAlignment = .center
-    label.textColor = .label
-    label.font = UIFont.preferredFont(forTextStyle: .subheadline).bold
+    label.textAlignment = .left
+    label.textColor = .white
+    label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
     label.adjustsFontForContentSizeCategory = true
     label.adjustsFontSizeToFitWidth = true
     return label
@@ -148,9 +124,9 @@ internal final class DropView: UIView {
   lazy var subtitleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.textAlignment = .center
-    label.textColor = UIAccessibility.isDarkerSystemColorsEnabled ? .label : .secondaryLabel
-    label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+    label.textAlignment = .left
+    label.textColor = .white
+    label.font = UIFont.systemFont(ofSize: 15, weight: .light)
     label.adjustsFontForContentSizeCategory = true
     label.adjustsFontSizeToFitWidth = true
     return label
@@ -183,7 +159,7 @@ internal final class DropView: UIView {
     view.axis = .vertical
     view.alignment = .fill
     view.distribution = .fill
-    view.spacing = -1
+    view.spacing = 2
     return view
   }()
 
@@ -191,12 +167,12 @@ internal final class DropView: UIView {
     let view = UIStackView(arrangedSubviews: [imageView, labelsStackView, button])
     view.translatesAutoresizingMaskIntoConstraints = false
     view.axis = .horizontal
-    view.alignment = .center
+    view.alignment = .leading
     view.distribution = .fill
     if drop.icon != nil, drop.action?.icon != nil {
-      view.spacing = 20
+      view.spacing = 16
     } else {
-      view.spacing = 15
+      view.spacing = 16
     }
     return view
   }()
@@ -214,15 +190,8 @@ final class RoundImageView: UIImageView {
   }
 }
 
-extension UIFont {
-  var bold: UIFont {
-    guard let descriptor = fontDescriptor.withSymbolicTraits(.traitBold) else { return self }
-    return UIFont(descriptor: descriptor, size: pointSize)
-  }
-}
-
 extension CGRect {
   var cornerRadius: CGFloat {
-    return min(width, height) / 2
+    return 13
   }
 }

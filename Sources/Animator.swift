@@ -74,8 +74,9 @@ internal final class Animator {
 
     var constraints = [
       view.centerXAnchor.constraint(equalTo: container.safeAreaLayoutGuide.centerXAnchor),
-      view.leadingAnchor.constraint(greaterThanOrEqualTo: container.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-      view.trailingAnchor.constraint(lessThanOrEqualTo: container.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+      view.widthAnchor.constraint(equalTo: container.safeAreaLayoutGuide.widthAnchor, constant: -16),
+      view.leadingAnchor.constraint(greaterThanOrEqualTo: container.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+      view.trailingAnchor.constraint(lessThanOrEqualTo: container.safeAreaLayoutGuide.trailingAnchor, constant: -8)
     ]
 
     switch position {
