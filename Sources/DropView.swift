@@ -87,6 +87,7 @@ internal final class DropView: UIView {
 
     imageView.image = drop.icon
     imageView.isHidden = drop.icon == nil
+    imageView.tintColor = .white
 
     button.setImage(drop.action?.icon, for: .normal)
     button.isHidden = drop.action?.icon == nil
@@ -167,7 +168,7 @@ internal final class DropView: UIView {
     let view = UIStackView(arrangedSubviews: [imageView, labelsStackView, button])
     view.translatesAutoresizingMaskIntoConstraints = false
     view.axis = .horizontal
-    view.alignment = .leading
+    view.alignment = .center
     view.distribution = .fill
     if drop.icon != nil, drop.action?.icon != nil {
       view.spacing = 16
