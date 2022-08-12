@@ -71,13 +71,15 @@ internal final class Animator {
 
     view.translatesAutoresizingMaskIntoConstraints = false
     container.addSubview(view)
+      
+    let widrhConstraint = UIDevice.isiPad() ? nil : view.widthAnchor.constraint(equalTo: container.safeAreaLayoutGuide.widthAnchor, constant: -16)
 
     var constraints = [
       view.centerXAnchor.constraint(equalTo: container.safeAreaLayoutGuide.centerXAnchor),
-      view.widthAnchor.constraint(equalTo: container.safeAreaLayoutGuide.widthAnchor, constant: -16),
+      widrhConstraint,
       view.leadingAnchor.constraint(greaterThanOrEqualTo: container.safeAreaLayoutGuide.leadingAnchor, constant: 8),
       view.trailingAnchor.constraint(lessThanOrEqualTo: container.safeAreaLayoutGuide.trailingAnchor, constant: -8)
-    ]
+    ].compactMap({ $0 })
 
     switch position {
     case .top:

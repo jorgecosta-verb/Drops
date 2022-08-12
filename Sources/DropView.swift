@@ -63,13 +63,18 @@ internal final class DropView: UIView {
       button.heightAnchor.constraint(equalToConstant: 35),
       button.widthAnchor.constraint(equalToConstant: 35)
     ]
+      
+    var insets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+
+    if UIDevice.isiPad() {
+        insets = UIEdgeInsets(top: 16, left: 32, bottom: 16, right: 32)
+    }
 
     constraints += [
-      stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-      stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-      stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-      stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
-      
+      stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: insets.left),
+      stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: insets.top),
+      stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -insets.right),
+      stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -insets.bottom)
     ]
 
     return constraints

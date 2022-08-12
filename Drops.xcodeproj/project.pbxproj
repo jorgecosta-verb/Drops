@@ -40,6 +40,7 @@
 		078898D02644A6CC009F04A5 /* WindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0785D37D26416DDF004D6171 /* WindowViewController.swift */; };
 		07CEDD3B2645EEC0004EE4CD /* DropsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CEDD3A2645EEBF004EE4CD /* DropsTests.swift */; };
 		07D8147726361DB7003F51DB /* Drops.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D8146D26361DB7003F51DB /* Drops.framework */; };
+		51B7C30428A652D300776C5B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B7C30328A652D300776C5B /* UIDevice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		07D8147D26361DB7003F51DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07D8148B26361DC6003F51DB /* Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
 		07D8149D26361DE8003F51DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../UIKitExample/ViewController.swift; sourceTree = "<group>"; };
+		51B7C30328A652D300776C5B /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 		07D8146F26361DB7003F51DB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				51B7C30228A652C800776C5B /* Extensions */,
 				07D8147126361DB7003F51DB /* Info.plist */,
 				0785D37F26416E0E004D6171 /* AnimationContext.swift */,
 				0785D38126416E3A004D6171 /* Animator.swift */,
@@ -253,6 +256,14 @@
 				0785D3AA26424A0C004D6171 /* WindowViewControllerTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		51B7C30228A652C800776C5B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				51B7C30328A652D300776C5B /* UIDevice.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,6 +502,7 @@
 				0785D38A26416EF3004D6171 /* Weak.swift in Sources */,
 				0785D38B26416EF3004D6171 /* Drops.swift in Sources */,
 				0785D38526416EF3004D6171 /* PassthroughView.swift in Sources */,
+				51B7C30428A652D300776C5B /* UIDevice.swift in Sources */,
 				0785D38D2641F487004D6171 /* Presenter.swift in Sources */,
 				0785D38926416EF3004D6171 /* DropView.swift in Sources */,
 				0785D38726416EF3004D6171 /* Drop.swift in Sources */,
