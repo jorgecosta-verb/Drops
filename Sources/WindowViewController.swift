@@ -76,6 +76,12 @@ internal extension UIApplication {
       .compactMap { $0 as? UIWindowScene }
       .first { $0.activationState == .foregroundActive }
   }
+    
+  var possibleWindowScene: UIWindowScene? {
+      return connectedScenes
+        .compactMap { $0 as? UIWindowScene }
+        .first
+  }
 }
 
 internal extension UIViewController {
