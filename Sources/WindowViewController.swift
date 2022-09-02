@@ -50,10 +50,15 @@ internal final class WindowViewController: UIViewController {
   func install() {
     window?.frame = UIScreen.main.bounds
     window?.isHidden = false
-    if let window = window, let activeScene = UIApplication.shared.activeWindowScene {
-      window.windowScene = activeScene
-      window.frame = activeScene.coordinateSpace.bounds
-    }
+      if let window = window,
+          let activeScene = UIApplication.shared.activeWindowScene {
+          window.windowScene = activeScene
+          window.frame = activeScene.coordinateSpace.bounds
+      } else if let window = window,
+                  let possibleActiveScene = UIApplication.shared.possibleWindowScene {
+          window.windowScene = possibleActiveScene
+          window.frame = possibleActiveScene.coordinateSpace.bounds
+      }
   }
 
   func uninstall() {
